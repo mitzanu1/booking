@@ -1,0 +1,46 @@
+.daylight-booking-open,
+.daylight-booking-close {
+  border: 0;
+  border-radius: 6px;
+  background: #28453a;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  padding: 0.7rem 1rem;
+}
+
+.daylight-booking-dialog {
+  border: 0;
+  border-radius: 10px;
+  height: min(760px, 90vh);
+  max-height: 90vh;
+  max-width: 560px;
+  overflow: hidden;
+  padding: 0;
+  width: min(560px, 94vw);
+}
+
+.daylight-booking-dialog::backdrop {
+  background: rgb(18 28 23 / 65%);
+}
+
+.daylight-booking-dialog-header {
+  align-items: center;
+  background: #fff;
+  display: flex;
+  font: 600 14px Arial, sans-serif;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+}
+
+.daylight-booking-close {
+  font-size: 12px;
+  padding: 0.5rem 0.75rem;
+}
+
+.daylight-booking-dialog iframe {
+  border: 0;
+  display: block;
+  height: calc(100% - 54px);
+  width: 100%;
+}

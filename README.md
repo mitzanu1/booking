@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Daylight Booking
 
-## Getting Started
+Daylight Booking is a hosted appointment widget with a WordPress shortcode and a private dashboard for each business.
 
-First, run the development server:
+## Supabase setup
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+1. Configure `NEXT_PUBLIC_SUPABASE_URL` and either `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` or `NEXT_PUBLIC_SUPABASE_ANON_KEY` in local development and Vercel.
+2. In the Supabase SQL Editor, run [`supabase/schema.sql`](./supabase/schema.sql). It creates a business profile for each new account, adds owner-scoped booking access, and enables the widget and trial policies.
+3. Enable email/password sign-in in Supabase Authentication. If email confirmation is enabled, new users must confirm their address before signing in.
+4. Visit `/dashboard` to create an account or sign in.
+
+Existing booking rows from before business accounts were added are left without an owner and are not shown to any business. New bookings require an active business-specific widget.
+
+## Trial and widget customization
+
+Each business gets a seven-day trial. Booking collection and the WordPress widget work during the trial, but customization is locked until a subscription is active. After the trial, new bookings pause until a subscription is activated; existing appointments remain available in the dashboard. The first customization controls are business name, widget heading, intro text, and brand color.
+
+The dashboard provides a shortcode such as:
+
+```text
+[daylight_book_now url="https://your-app.vercel.app/widget?wid=your-widget-id"]
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Install the WordPress plugin from `wordpress-plugin/daylight-booking`, then paste the shortcode into a WordPress page.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Mock payments
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The dashboard's **Test mock payment** button activates a 30-day mock subscription, and **Cancel mock subscription** expires it immediately. No payment is collected. This intentionally simulated RPC is for testing only; replace it with a verified payment-provider webhook before accepting real subscriptions or charging customers.
 
-## Learn More
+## Development
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm install
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open `http://localhost:3000`.

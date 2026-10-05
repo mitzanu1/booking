@@ -13,12 +13,15 @@ export default function Home() {
         <div className="link-list">
           <Link className="button" href="/dashboard">Create account / sign in</Link>
           <Link className="button button-secondary" href="/widget">Widget preview</Link>
+          <a className="button button-secondary" download href="/daylight-booking.zip">
+            Download WordPress plugin
+          </a>
         </div>
         <div className="setup-note">
           <strong>WordPress</strong>
           <p>
-            After signing in, copy your business-specific shortcode from the
-            dashboard and add it to a page with the Daylight Booking plugin installed.
+            Download and install the plugin ZIP, then sign in and copy your
+            business-specific shortcode into a WordPress Shortcode block.
           </p>
         </div>
       </section>

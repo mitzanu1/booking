@@ -15,7 +15,7 @@ Existing booking rows from before business accounts were added are left without 
 
 Each business gets a seven-day trial. Booking collection and the WordPress widget work during the trial, but customization is locked until a subscription is active. After the trial, new bookings pause until a subscription is activated; existing appointments remain available in the dashboard. The first customization controls are business name, widget heading, intro text, and brand color.
 
-The dashboard provides a shortcode such as:
+Download the installable plugin ZIP from the website's home page (`/daylight-booking.zip`), then upload it under **WordPress → Plugins → Add New Plugin → Upload Plugin** and activate it. The dashboard provides a shortcode such as:
 
 ```text
 [daylight_book_now url="https://your-app.vercel.app/widget?wid=your-widget-id"]
